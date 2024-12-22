@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Science Wonders</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?science,atom,space') center/cover no-repeat;
+            background-size: cover;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header and Guides Button */
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .guides-button {
+            background-color: #ff6f61;
+            padding: 12px 25px;
+            font-size: 1.3rem;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .guides-button:hover {
+            background-color: #e85a4f;
+            transform: translateY(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            animation: fadeIn 3s ease-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            z-index: 1;
+            transform: translateY(30px);
+            animation: slideUp 2s ease-out forwards;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .description {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .cta-button {
+            background-color: #ff6f61;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e85a4f;
+            transform: translateY(-5px);
+        }
+
+        /* Explore Section */
+        .explore-section {
+            padding: 60px 20px;
+            text-align: center;
+            display: none;
+            animation: fadeInSection 2.5s ease-in-out forwards;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .explore-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 25px;
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .image {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin: 15px 0;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover h3 {
+            color: #ff6f61;
+        }
+
+        /* Dropdown Content */
+        .dropdown-content {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #555;
+            transition: max-height 0.5s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .card.active .dropdown-content {
+            display: block;
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(100px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes fadeInSection {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Guides Button -->
+    <div class="header">
+        <a href="https://www.example.com/guides" class="guides-button" target="_blank">Guides</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="title">Discover the Wonders of Science</h1>
+            <p class="description">Explore the mysteries of the universe through captivating articles, videos, and interactive simulations.</p>
+            <a href="#explore" class="cta-button" onclick="showExploreSection()">Explore Now</a>
+        </div>
+    </div>
+
+    <section id="explore" class="explore-section">
+        <div class="section-title">
+            <h2>Science Topics</h2>
+        </div>
+        <div class="explore-cards">
+            <div class="card" onclick="toggleDropdown(this)">
+                <img src="https://th.bing.com/th/id/OIP.Oe39fw-Os6LaGWdr0m3LpQHaHa?rs=1&pid=ImgDetMain" alt="Atom Image" class="image">
+                <h3>Atoms</h3>
+                <div class="dropdown-content">
+                    <p><strong>What are Atoms?</strong><br>Atoms are the fundamental building blocks of matter. Everything around us is made up of atoms, which are composed of protons, neutrons, and electrons. The arrangement of these particles in an atom defines the element it represents.</p>
+                    <p><strong>Atomic Theory:</strong><br>The atomic theory has evolved over centuries. John Dalton first proposed it in the early 19th century, which was later refined with quantum mechanics and nuclear physics, revolutionizing our understanding of chemistry and physics.</p>
+                </div>
+            </div>
+            <div class="card" onclick="toggleDropdown(this)">
+                <img src="https://th.bing.com/th/id/OIP.Oe39fw-Os6LaGWdr0m3LpQHaHa?rs=1&pid=ImgDetMain" alt="Physics Image" class="image">
+                <h3>Physics</h3>
+                <div class="dropdown-content">
+                    <p><strong>What is Physics?</strong><br>Physics is the branch of science that deals with the properties and interactions of matter and energy. It explains fundamental forces like gravity, electromagnetism, and the strong and weak nuclear forces.</p>
+                    <p><strong>Key Concepts:</strong><br>Physics is divided into various fields such as classical mechanics, quantum mechanics, and thermodynamics. Concepts like relativity and quantum physics have expanded our understanding of the universe, from the smallest particles to the vastness of space.</p>
+                </div>
+            </div>
+            <div class="card" onclick="toggleDropdown(this)">
+                <img src="https://th.bing.com/th/id/OIP.Oe39fw-Os6LaGWdr0m3LpQHaHa?rs=1&pid=ImgDetMain" alt="Chemistry Image" class="image">
+                <h3>Chemistry</h3>
+                <div class="dropdown-content">
+                    <p><strong>What is Chemistry?</strong><br>Chemistry is the science of matter and its interactions. It studies the composition, structure, properties, and reactions of substances. Chemistry connects the physical sciences with biology and medicine, making it a central science.</p>
+                    <p><strong>Importance in Daily Life:</strong><br>Chemistry plays a crucial role in daily life. It is the science behind cooking, cleaning, the medicines we use, and even the materials that make up our electronic devices and buildings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Science Wonders | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(card) {
+            card.classList.toggle('active');
+        }
+
+        function showExploreSection() {
+            document.querySelector('.explore-section').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
